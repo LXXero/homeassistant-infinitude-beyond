@@ -491,12 +491,12 @@ class InfinitudeSystem:
             return None
         if odu.get("type") in ["proteus", "gs3ngipac"]:
             odu_opstat = odu.get("opstat")
+            if odu_opstat.isnumeric():
+                return int(odu_opstat)
             if odu_opstat == "dehumidify": # return 1 for dehumidify
                 return 1
             if odu_opstat == "off": # return 0 for off
                 return 0
-            if odu_opstat[-1].isnumeric():
-                return int(odu_opstat[-1])
         return None
 
     @property
